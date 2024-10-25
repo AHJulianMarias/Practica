@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Practica</string>
+    <string name="mi_perfil_personal">Mi perfil personal</string>
+    <string name="pais_de_origen">Pais de origen:</string>
+    <string name="elige_el_sexo">Elige el sexo:</string>
+    <string name="otro">Otro</string>
+    <string name="femenino">Femenino</string>
+    <string name="masculino">Masculino</string>
+    <string name="apellidos">Apellidos:</string>
+    <string name="nombre">Nombre:</string>
+    <string name="email">email</string>
+    <string name="imagen_de_avatar_rufus">Imagen de avatar RUFUS</string>
+</resources>
