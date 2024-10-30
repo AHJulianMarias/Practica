@@ -8,6 +8,18 @@
     <string name="masculino">Masculino</string>
     <string name="apellidos">Apellidos:</string>
     <string name="nombre">Nombre:</string>
-    <string name="email">email</string>
+    <string name="email">Email:</string>
     <string name="imagen_de_avatar_rufus">Imagen de avatar RUFUS</string>
+    <string name="lectura">Lectura</string>
+    <string name="m_sica">Música</string>
+    <string name="arte">Arte</string>
+    <string name="deporte">Deporte</string>
+    <string name="elije_tus_hobbies">Elije tus hobbies:</string>
+    <string name="nivel_de_satisfacci_n">Nivel de satisfacción:</string>
+    <string name="guardar_y_mostrar">Guardar y mostrar</string>
+    <string name="suscripcion_al_bolet_n_informativo">Suscripcion al boletín informativo:</string>
+    <string name="_0">0</string>
+    <string name="nombre_apellidos_email_sexo_pais_de_origen_hobbies_nivel_de_satisfaccion_suscripcion_al_boletin_si">"Nombre: %1$s\n                    |Apellidos: %2$s\n                    |Email: %3$s\n                    |Sexo: %4$s\n                    |País de origen: %5$s\n                    |Hobbies: %6$s\n                    |Nivel de satisfacción: %7$s\n                    |Suscripción al boletin: Si\n                "</string>
+    <string name="nombre_apellidos_email_sexo_pais_de_origen_hobbies_nivel_de_satisfaccion_suscripcion_al_boletin_no">"Nombre: %1$s\n                    |Apellidos: %2$s\n                    |Email: %3$s\n                    |Sexo: %4$s\n                    |País de origen: %5$s\n                    |Hobbies: %6$s\n                    |Nivel de satisfacción: %7$s\n                    |Suscripción al boletin: No\n                "</string>
+    <string name="no_has_escogido_ningun_hobbie">No has escogido ningun hobbie</string>
 </resources>
