@@ -29,7 +29,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     lateinit var textoSpinner: String
     lateinit var checkboxLectura: CheckBox
     lateinit var checkboxMusica: CheckBox
-    lateinit var checkboxDeporte: CheckBox6
+    lateinit var checkboxDeporte: CheckBox
     lateinit var checkboxArte: CheckBox
     lateinit var seekB: SeekBar
     lateinit var textoSeekB: TextView
