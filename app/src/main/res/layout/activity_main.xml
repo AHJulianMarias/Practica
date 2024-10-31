@@ -14,7 +14,7 @@
         tools:layout_editor_absoluteX="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
             <TextView
@@ -51,6 +51,7 @@
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
                 app:layout_constraintEnd_toEndOf="@+id/apellidosInp"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/apellidosInp"
                 app:layout_constraintTop_toBottomOf="@+id/apellidosInp"
                 app:layout_constraintWidth_percent="0.9" />
@@ -95,47 +96,52 @@
 
             <RadioGroup
                 android:id="@+id/radioGroup"
-                android:layout_width="383dp"
+                android:layout_width="0dp"
                 android:layout_height="94dp"
                 android:checkedButton="@id/rBMasc"
                 android:orientation="horizontal"
                 app:layout_constraintEnd_toEndOf="@+id/txtEligeSexo"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/txtEligeSexo"
-                app:layout_constraintTop_toBottomOf="@+id/txtEligeSexo">
+                app:layout_constraintTop_toBottomOf="@+id/txtEligeSexo"
+                app:layout_constraintWidth_percent="0.9">
 
                 <RadioButton
                     android:id="@+id/rBMasc"
-                    android:layout_width="159dp"
-                    android:layout_height="91dp"
+                    android:layout_width="0dp"
+                    android:layout_height="94dp"
                     android:layout_weight="1"
-                    android:text="@string/masculino" />
+                    android:text="@string/masculino"
+                    app:layout_constraintWidth_percent="0.25" />
 
                 <RadioButton
                     android:id="@+id/rbFem"
-                    android:layout_width="150dp"
-                    android:layout_height="88dp"
+                    android:layout_width="0dp"
+                    android:layout_height="94dp"
                     android:layout_marginEnd="4dp"
                     android:layout_weight="1"
-                    android:text="@string/femenino" />
+                    android:text="@string/femenino"
+                    app:layout_constraintWidth_percent="0.25" />
 
                 <RadioButton
                     android:id="@+id/rBOtro"
-                    android:layout_width="134dp"
-                    android:layout_height="93dp"
+                    android:layout_width="0dp"
+                    android:layout_height="94dp"
                     android:layout_weight="1"
-                    android:text="@string/otro" />
+                    android:text="@string/otro"
+                    app:layout_constraintWidth_percent="0.25" />
 
             </RadioGroup>
 
             <Spinner
                 android:id="@+id/spinnerPaises"
-                android:layout_width="230dp"
+                android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 app:layout_constraintEnd_toEndOf="@+id/radioGroup"
-                app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+                app:layout_constraintWidth_percent="0.60" />
 
             <TextView
                 android:id="@+id/textView6"
@@ -148,18 +154,19 @@
 
             <CheckBox
                 android:id="@+id/checkBoxLectura"
-                android:layout_width="183dp"
+                android:layout_width="0dp"
                 android:layout_height="65dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/lectura"
                 app:layout_constraintEnd_toEndOf="@+id/textView2"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/textView2"
-                app:layout_constraintTop_toBottomOf="@+id/textView2" />
+                app:layout_constraintTop_toBottomOf="@+id/textView2"
+                app:layout_constraintWidth_percent="0.425" />
 
             <CheckBox
                 android:id="@+id/cbMusic"
-                android:layout_width="183dp"
+                android:layout_width="0dp"
                 android:layout_height="65dp"
                 android:layout_marginTop="64dp"
                 android:layout_weight="1"
@@ -167,33 +174,36 @@
                 app:layout_constraintEnd_toEndOf="@+id/spinnerPaises"
                 app:layout_constraintHorizontal_bias="1.0"
                 app:layout_constraintStart_toStartOf="@+id/spinnerPaises"
-                app:layout_constraintTop_toBottomOf="@+id/spinnerPaises" />
+                app:layout_constraintTop_toBottomOf="@+id/spinnerPaises"
+                app:layout_constraintWidth_percent="0.425" />
 
             <CheckBox
                 android:id="@+id/cBArt"
-                android:layout_width="183dp"
+                android:layout_width="0dp"
                 android:layout_height="65dp"
                 android:layout_marginTop="36dp"
                 android:text="@string/arte"
                 app:layout_constraintEnd_toEndOf="@+id/cbMusic"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/cbMusic"
-                app:layout_constraintTop_toBottomOf="@+id/cbMusic" />
+                app:layout_constraintTop_toBottomOf="@+id/cbMusic"
+                app:layout_constraintWidth_percent="0.425" />
 
             <CheckBox
                 android:id="@+id/cBDeporte"
-                android:layout_width="183dp"
+                android:layout_width="0dp"
                 android:layout_height="65dp"
                 android:layout_marginTop="36dp"
                 android:text="@string/deporte"
                 app:layout_constraintEnd_toEndOf="@+id/checkBoxLectura"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/checkBoxLectura"
-                app:layout_constraintTop_toBottomOf="@+id/checkBoxLectura" />
+                app:layout_constraintTop_toBottomOf="@+id/checkBoxLectura"
+                app:layout_constraintWidth_percent="0.425" />
 
             <SeekBar
                 android:id="@+id/seekBar"
-                android:layout_width="271dp"
+                android:layout_width="0dp"
                 android:layout_height="20dp"
                 android:layout_marginTop="12dp"
                 android:max="10"
@@ -202,7 +212,8 @@
                 app:layout_constraintEnd_toEndOf="@+id/textView3"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/textView3"
-                app:layout_constraintTop_toBottomOf="@+id/textView3" />
+                app:layout_constraintTop_toBottomOf="@+id/textView3"
+                app:layout_constraintWidth_percent="0.85" />
 
             <TextView
                 android:id="@+id/textView2"
@@ -228,18 +239,20 @@
 
             <Switch
                 android:id="@+id/switch1"
-                android:layout_width="373dp"
+                android:layout_width="0dp"
                 android:layout_height="98dp"
                 android:layout_marginTop="16dp"
                 android:text="@string/suscripcion_al_bolet_n_informativo"
                 app:layout_constraintEnd_toEndOf="@+id/seekBar"
                 app:layout_constraintHorizontal_bias="0.029"
                 app:layout_constraintStart_toStartOf="@+id/seekBar"
-                app:layout_constraintTop_toBottomOf="@+id/seekBar" />
+                app:layout_constraintTop_toBottomOf="@+id/seekBar"
+                app:layout_constraintWidth_percent="0.90"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
 
             <Button
                 android:id="@+id/botonMostrarResultado"
-                android:layout_width="263dp"
+                android:layout_width="0dp"
                 android:layout_height="57dp"
                 android:layout_marginStart="52dp"
                 android:layout_marginTop="24dp"
@@ -248,15 +261,17 @@
                 app:layout_constraintEnd_toEndOf="@+id/cBArt"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/switch1"
-                app:layout_constraintTop_toBottomOf="@+id/switch1" />
+                app:layout_constraintTop_toBottomOf="@+id/switch1"
+                app:layout_constraintWidth_percent="0.75" />
 
             <TextView
                 android:id="@+id/mostrarResultado"
-                android:layout_width="400dp"
+                android:layout_width="401dp"
                 android:layout_height="188dp"
                 android:layout_marginTop="4dp"
+                android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/botonMostrarResultado"
-                app:layout_constraintHorizontal_bias="0.467"
+                app:layout_constraintHorizontal_bias="0.619"
                 app:layout_constraintStart_toStartOf="@+id/botonMostrarResultado"
                 app:layout_constraintTop_toBottomOf="@+id/botonMostrarResultado" />
 

@@ -35,6 +35,7 @@
                 android:layout_width="0dp"
                 android:layout_height="89dp"
                 android:layout_marginTop="8dp"
+                android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/nombre"
                 android:inputType="text"
@@ -49,6 +50,7 @@
                 android:layout_width="0dp"
                 android:layout_height="89dp"
                 android:layout_marginTop="4dp"
+                android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/email"
                 android:inputType="textEmailAddress"
@@ -62,6 +64,7 @@
                 android:layout_width="0dp"
                 android:layout_height="89dp"
                 android:layout_marginTop="4dp"
+                android:autofillHints=""
                 android:ems="10"
                 android:hint="@string/apellidos"
                 android:inputType="text"
@@ -252,7 +255,8 @@
                 app:layout_constraintHorizontal_bias="0.029"
                 app:layout_constraintStart_toStartOf="@+id/seekBar"
                 app:layout_constraintTop_toBottomOf="@+id/seekBar"
-                app:layout_constraintWidth_percent="0.9" />
+                app:layout_constraintWidth_percent="0.9"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
 
             <Button
                 android:id="@+id/botonMostrarResultado"

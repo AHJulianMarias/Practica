@@ -1,5 +1,6 @@
 package com.example.practica
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -33,6 +34,8 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     lateinit var checkboxArte: CheckBox
     lateinit var seekB: SeekBar
     lateinit var textoSeekB: TextView
+
+    @SuppressLint("UseSwitchCompatOrMaterialCode")
     lateinit var switch: Switch
     lateinit var mostrarResText: TextView
 
@@ -113,53 +116,36 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     android.util.Patterns.EMAIL_ADDRESS.matcher(emailInp.text.toString()).matches()
                 )
             } else {
-                //Radio group
-                radioGroup = findViewById(R.id.radioGroup)
-                var selectedRadioId = radioGroup.checkedRadioButtonId
-                radioboton = findViewById(selectedRadioId)
-                radiobotonText = radioboton.text.toString()
 
+                radiobotonText = textoRadioButton()
                 //checkbox
-                checkboxLectura = findViewById(R.id.checkBoxLectura)
-                checkboxMusica = findViewById(R.id.cbMusic)
-                checkboxDeporte = findViewById<CheckBox>(R.id.cBDeporte)
-                checkboxArte = findViewById(R.id.cBArt)
-                //Recoleccion de checkbox marcados
-                val arraycb =
-                    arrayOf(checkboxLectura, checkboxMusica, checkboxDeporte, checkboxArte)
-                var stringAficiones = ""
-                for (b in arraycb) {
-                    if (b.isChecked) {
-                        stringAficiones += b.text.toString().lowercase() + ", "
-                    }
-                }
-                if (stringAficiones == "") {
-                    stringAficiones = getString(R.string.no_has_escogido_ningun_hobbie)
-                }
+                var stringAficiones = textoCheckbox()
+
+
                 mostrarResText = findViewById(R.id.mostrarResultado)
                 switch = findViewById(R.id.switch1)
                 if (switch.isChecked) {
                     mostrarResText.text = getString(
                         R.string.nombre_apellidos_email_sexo_pais_de_origen_hobbies_nivel_de_satisfaccion_suscripcion_al_boletin_si,
-                        nombreInput.text.toString(),
-                        apellidoInput.text.toString(),
-                        emailInp.text.toString(),
-                        radiobotonText,
-                        textoSpinner,
+                        "${nombreInput.text.toString().trim()}.",
+                        "${apellidoInput.text.toString().trim()}.",
+                        "${emailInp.text.toString().trim()}.",
+                        "$radiobotonText.",
+                        "$textoSpinner.",
                         stringAficiones,
-                        textoSeekB.text.toString()
+                        "${textoSeekB.text.toString()}."
                     ).trimMargin()
 
                 } else {
                     mostrarResText.text = getString(
                         R.string.nombre_apellidos_email_sexo_pais_de_origen_hobbies_nivel_de_satisfaccion_suscripcion_al_boletin_no,
-                        nombreInput.text.toString(),
-                        apellidoInput.text.toString(),
-                        emailInp.text.toString(),
-                        radiobotonText,
-                        textoSpinner,
+                        "${nombreInput.text.toString()}.",
+                        "${apellidoInput.text.toString()}.",
+                        "${emailInp.text.toString()}.",
+                        "$radiobotonText.",
+                        "$textoSpinner.",
                         stringAficiones,
-                        textoSeekB.text.toString()
+                        "${textoSeekB.text.toString()}."
                     ).trimMargin()
                 }
             }
@@ -174,28 +160,93 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
      * Numero de parametros = 2 -> email no valido, solo comprueba que el segundo parametro sea un booleano, no hace la comprobacion de que sea False, no le vi la necesidad
      */
 
-    private fun mostrarToast(vararg parametro: Any) {
-        if (parametro.size == 1) {
-            if (parametro[0] is EditText) {
-                var item = parametro[0] as EditText
-                Toast.makeText(
-                    this,
-                    "El apartado " + item.hint.toString().replace(":", "")
-                        .lowercase() + " no puede estar vacio.",
-                    Toast.LENGTH_LONG
-                ).show()
-            }
-        } else if (parametro.size == 2) {
-            if (parametro[0] is EditText && parametro[1] is Boolean) {
-                var editTextParametro = parametro[0] as EditText
-                Toast.makeText(
-                    this,
-                    "El apartado " + editTextParametro.hint.toString().replace(":", "")
-                        .lowercase() + " no es válido.",
-                    Toast.LENGTH_LONG
-                ).show()
+
+    private fun mostrarToast(editT: EditText) {
+        Toast.makeText(
+            this,
+            "El apartado " + editT.hint.toString().replace(":", "")
+                .lowercase() + " no puede estar vacio.",
+            Toast.LENGTH_LONG
+        ).show()
+    }
+
+    private fun mostrarToast(editT: EditText, verificado: Boolean) {
+        if (verificado) {
+            Toast.makeText(
+                this,
+                "El apartado " + editT.hint.toString().replace(":", "")
+                    .lowercase() + " no es válido.",
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+
+    private fun textoRadioButton(): String {
+        radioGroup = findViewById(R.id.radioGroup)
+        var selectedRadioId = radioGroup.checkedRadioButtonId
+        radioboton = findViewById(selectedRadioId)
+        return radioboton.text.toString()
+    }
+
+    private fun textoCheckbox(): String {
+        checkboxLectura = findViewById(R.id.checkBoxLectura)
+        checkboxMusica = findViewById(R.id.cbMusic)
+        checkboxDeporte = findViewById(R.id.cBDeporte)
+        checkboxArte = findViewById(R.id.cBArt)
+        //meto los checkbox en una facil para recorrerles mas facilmente
+        val arraycb = arrayOf(checkboxLectura, checkboxMusica, checkboxDeporte, checkboxArte)
+        var stringAficiones = ""
+        for (b in arraycb) {
+            if (b.isChecked) {
+                stringAficiones += b.text.toString().lowercase() + ", "
             }
         }
+
+        if (stringAficiones == "") {
+            // si esta vacio devuelve el texto de que no ha escogido ningun hobbie
+            return getString(R.string.no_has_escogido_ningun_hobbie)
+
+        } else {
+
+            /*
+            poner el texto bonito, la ultima "," por un "."
+            El texto original seria: "musica, arte, deporte, "
+            Tras el if y el trim quedaria asi
+            "musica, arte, deporte."
+             */
+            var charstringAficiones = stringAficiones.trim().toCharArray()
+            if (charstringAficiones[charstringAficiones.size - 1] == ',') {
+                charstringAficiones[charstringAficiones.size - 1] = '.'
+                /*
+                si sigue habiendo otra "," es por que las opcion son 2 o mas, aqui se cambia la penultima "," del string original para que sea un " y"
+                el texto actual seria "musica, arte, deporte."
+                No existe un replaceLast, asi que damos la vuelta al string, usamos un replaceFirst, que sería la ultima "," pero ha pasado a ser la primera, y hacemos el replace
+                El texto quedaria:
+                "musica, arte y deporte."
+                Solamente se ejecutará si sigue habiendo "," en el string
+                 */
+                stringAficiones = String(charstringAficiones)
+                if ("," in stringAficiones) {
+                    stringAficiones = stringAficiones.reversed().replaceFirst(",", "y")
+                    stringAficiones = stringAficiones.reversed().replace("y", " y")
+                }
+
+            }
+            return stringAficiones
+            // Primera terroristada para cambiar la ultima "," por una " y"
+//            var indexComa: Int = 0
+//            for (i in 0 until stringAficiones.length - 1) {
+//                if (charstringAficiones[i] == ',') {
+//                    indexComa = i
+//                }
+//            }
+//            charstringAficiones[indexComa] = 'y'
+//            stringAficiones = String(charstringAficiones)
+//            stringAficiones = stringAficiones.replace("y", " y")
+
+        }
+
+
     }
 
     /**
