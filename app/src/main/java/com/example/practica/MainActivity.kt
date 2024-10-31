@@ -1,6 +1,5 @@
 package com.example.practica
 
-import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -17,34 +16,26 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
+
 class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
-    lateinit var nombreInput: EditText
-    lateinit var apellidoInput: EditText
-    lateinit var emailInp: EditText
-    lateinit var botonGuardar: Button
-    lateinit var radioGroup: RadioGroup
-    lateinit var radioboton: RadioButton
-    lateinit var radiobotonText: String
-    lateinit var spinnerPaises: Spinner
-    lateinit var textoSpinner: String
-    lateinit var checkboxLectura: CheckBox
-    lateinit var checkboxMusica: CheckBox
-    lateinit var checkboxDeporte: CheckBox
-    lateinit var checkboxArte: CheckBox
-    lateinit var seekB: SeekBar
-    lateinit var textoSeekB: TextView
 
-    @SuppressLint("UseSwitchCompatOrMaterialCode")
-    lateinit var switch: Switch
-    lateinit var mostrarResText: TextView
+    private lateinit var radioGroup: RadioGroup
+    private lateinit var radioboton: RadioButton
+    private lateinit var checkboxLectura: CheckBox
+    private lateinit var checkboxMusica: CheckBox
+    private lateinit var checkboxDeporte: CheckBox
+    private lateinit var checkboxArte: CheckBox
+    private lateinit var textoSpinner: String
+    private lateinit var spinnerPaises: Spinner
 
+    private lateinit var mostrarResText: TextView
+    private val KEY_MOSTRAR_RESULTADO = "key_mostrar_resultado"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        botonGuardar = findViewById(R.id.botonMostrarResultado)
+        val botonGuardar: Button = findViewById(R.id.botonMostrarResultado)
         val paises = arrayOf(
             "España",
             "Argentina",
@@ -55,6 +46,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
 
         //SPINNER
+
         spinnerPaises = findViewById<Spinner>(R.id.spinnerPaises)
         val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, paises)
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
@@ -63,11 +55,18 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
 
         //SEEKBAR
-        seekB = findViewById(R.id.seekBar)
-        textoSeekB = findViewById(R.id.valorSeekBar)
+        val seekB = findViewById<SeekBar>(R.id.seekBar)
+        val textoSeekB = findViewById<TextView>(R.id.valorSeekBar)
         seekB.max = 10
         seekB.min = 0
+        mostrarResText = findViewById(R.id.mostrarResultado)
 
+        if (savedInstanceState != null) {
+            // Recuperamos y establecemos el texto guardado del EditText
+            val savedText = savedInstanceState.getString(KEY_MOSTRAR_RESULTADO)
+            mostrarResText.text = savedText
+
+        }
 
         seekB.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
             /**
@@ -99,9 +98,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         botonGuardar.setOnClickListener {
 
             // vistas + asignación de texto de nombre, apellidos y mail
-            nombreInput = findViewById(R.id.nombreInp)
-            apellidoInput = findViewById(R.id.apellidosInp)
-            emailInp = findViewById(R.id.emailInp)
+            val nombreInput = findViewById<EditText>(R.id.nombreInp)
+            val apellidoInput = findViewById<EditText>(R.id.apellidosInp)
+            val emailInp = findViewById<EditText>(R.id.emailInp)
             if (nombreInput.text.toString() == "") {
                 mostrarToast(nombreInput)
             } else if (apellidoInput.text.toString() == "") {
@@ -116,14 +115,13 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                     android.util.Patterns.EMAIL_ADDRESS.matcher(emailInp.text.toString()).matches()
                 )
             } else {
+                //llamada a textoRadioButton()
+                val radiobotonText = textoRadioButton()
+                //llamada a textoCheckbox()
+                val stringAficiones = textoCheckbox()
 
-                radiobotonText = textoRadioButton()
-                //checkbox
-                var stringAficiones = textoCheckbox()
 
-
-                mostrarResText = findViewById(R.id.mostrarResultado)
-                switch = findViewById(R.id.switch1)
+                val switch = findViewById<Switch>(R.id.switch1)
                 if (switch.isChecked) {
                     mostrarResText.text = getString(
                         R.string.nombre_apellidos_email_sexo_pais_de_origen_hobbies_nivel_de_satisfaccion_suscripcion_al_boletin_si,
@@ -136,6 +134,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                         "${textoSeekB.text.toString()}."
                     ).trimMargin()
 
+
                 } else {
                     mostrarResText.text = getString(
                         R.string.nombre_apellidos_email_sexo_pais_de_origen_hobbies_nivel_de_satisfaccion_suscripcion_al_boletin_no,
@@ -147,7 +146,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
                         stringAficiones,
                         "${textoSeekB.text.toString()}."
                     ).trimMargin()
+
                 }
+
             }
 
         }
@@ -183,7 +184,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
 
     private fun textoRadioButton(): String {
         radioGroup = findViewById(R.id.radioGroup)
-        var selectedRadioId = radioGroup.checkedRadioButtonId
+        val selectedRadioId = radioGroup.checkedRadioButtonId
         radioboton = findViewById(selectedRadioId)
         return radioboton.text.toString()
     }
@@ -196,9 +197,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         //meto los checkbox en una facil para recorrerles mas facilmente
         val arraycb = arrayOf(checkboxLectura, checkboxMusica, checkboxDeporte, checkboxArte)
         var stringAficiones = ""
-        for (b in arraycb) {
-            if (b.isChecked) {
-                stringAficiones += b.text.toString().lowercase() + ", "
+        for (cb in arraycb) {
+            if (cb.isChecked) {
+                stringAficiones += cb.text.toString().lowercase() + ", "
             }
         }
 
@@ -214,7 +215,7 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
             Tras el if y el trim quedaria asi
             "musica, arte, deporte."
              */
-            var charstringAficiones = stringAficiones.trim().toCharArray()
+            val charstringAficiones = stringAficiones.trim().toCharArray()
             if (charstringAficiones[charstringAficiones.size - 1] == ',') {
                 charstringAficiones[charstringAficiones.size - 1] = '.'
                 /*
@@ -260,4 +261,9 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         TODO("Not yet implemented")
     }
 
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putString(KEY_MOSTRAR_RESULTADO, mostrarResText.text.toString())
+
+    }
 }

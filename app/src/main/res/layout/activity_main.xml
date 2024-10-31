@@ -19,14 +19,15 @@
 
             <TextView
                 android:id="@+id/textView"
-                android:layout_width="215dp"
+                android:layout_width="0dp"
                 android:layout_height="60dp"
                 android:layout_marginTop="60dp"
                 android:text="@string/mi_perfil_personal"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.149"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintWidth_percent="0.55" />
 
             <EditText
                 android:id="@+id/nombreInp"
@@ -85,14 +86,15 @@
 
             <TextView
                 android:id="@+id/txtEligeSexo"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:text="@string/elige_el_sexo"
                 app:layout_constraintEnd_toEndOf="@+id/emailInp"
                 app:layout_constraintHorizontal_bias="0.01"
                 app:layout_constraintStart_toStartOf="@+id/emailInp"
-                app:layout_constraintTop_toBottomOf="@+id/emailInp" />
+                app:layout_constraintTop_toBottomOf="@+id/emailInp"
+                app:layout_constraintWidth_percent="0.9" />
 
             <RadioGroup
                 android:id="@+id/radioGroup"
@@ -145,12 +147,13 @@
 
             <TextView
                 android:id="@+id/textView6"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="28dp"
                 android:text="@string/pais_de_origen"
                 app:layout_constraintStart_toStartOf="@+id/radioGroup"
-                app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+                app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+                app:layout_constraintWidth_percent="0.25" />
 
             <CheckBox
                 android:id="@+id/checkBoxLectura"
@@ -217,25 +220,27 @@
 
             <TextView
                 android:id="@+id/textView2"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="48dp"
                 android:text="@string/elije_tus_hobbies"
                 app:layout_constraintEnd_toEndOf="@+id/textView6"
-                app:layout_constraintHorizontal_bias="0.23"
+                app:layout_constraintHorizontal_bias="0.027"
                 app:layout_constraintStart_toStartOf="@+id/textView6"
-                app:layout_constraintTop_toBottomOf="@+id/textView6" />
+                app:layout_constraintTop_toBottomOf="@+id/textView6"
+                app:layout_constraintWidth_percent="0.9" />
 
             <TextView
                 android:id="@+id/textView3"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:text="@string/nivel_de_satisfacci_n"
                 app:layout_constraintEnd_toEndOf="@+id/cBDeporte"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="@+id/cBDeporte"
-                app:layout_constraintTop_toBottomOf="@+id/cBDeporte" />
+                app:layout_constraintTop_toBottomOf="@+id/cBDeporte"
+                app:layout_constraintWidth_percent="0.9" />
 
             <Switch
                 android:id="@+id/switch1"
@@ -255,12 +260,12 @@
                 android:layout_width="0dp"
                 android:layout_height="57dp"
                 android:layout_marginStart="52dp"
-                android:layout_marginTop="24dp"
+                android:layout_marginTop="4dp"
                 android:backgroundTint="#B900D7"
                 android:text="@string/guardar_y_mostrar"
-                app:layout_constraintEnd_toEndOf="@+id/cBArt"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="@+id/switch1"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/switch1"
                 app:layout_constraintWidth_percent="0.75" />
 
@@ -271,7 +276,7 @@
                 android:layout_marginTop="4dp"
                 android:textSize="16sp"
                 app:layout_constraintEnd_toEndOf="@+id/botonMostrarResultado"
-                app:layout_constraintHorizontal_bias="0.619"
+                app:layout_constraintHorizontal_bias="0.473"
                 app:layout_constraintStart_toStartOf="@+id/botonMostrarResultado"
                 app:layout_constraintTop_toBottomOf="@+id/botonMostrarResultado" />
 
