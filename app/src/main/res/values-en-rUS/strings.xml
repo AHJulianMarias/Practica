@@ -1,0 +1,32 @@
+<resources>
+    <string name="app_name">Practice</string>
+    <string name="mi_perfil_personal">My personal profile</string>
+    <string name="pais_de_origen">Country of origin:</string>
+    <string name="elige_el_sexo">Choose gender:</string>
+    <string name="otro">Other</string>
+    <string name="femenino">Female</string>
+    <string name="masculino">Male</string>
+    <string name="apellidos">Last Name:</string>
+    <string name="nombre">First Name:</string>
+    <string name="email">Email:</string>
+    <string name="imagen_de_avatar_rufus">Avatar image RUFUS</string>
+    <string name="lectura">Reading</string>
+    <string name="m_sica">Music</string>
+    <string name="arte">Art</string>
+    <string name="deporte">Sports</string>
+    <string name="elije_tus_hobbies">Choose your hobbies:</string>
+    <string name="nivel_de_satisfacci_n">Satisfaction level:</string>
+    <string name="guardar_y_mostrar">Save and show</string>
+    <string name="suscripcion_al_bolet_n_informativo">Subscription to the newsletter:</string>
+    <string name="_0">0</string>
+    <string name="nombre_apellidos_email_sexo_pais_de_origen_hobbies_nivel_de_satisfaccion_suscripcion_al_boletin_si">"First Name: %1$s\n                    |Last Name: %2$s\n                    |Email: %3$s\n                    |Gender: %4$s\n                    |Country of origin: %5$s\n                    |Hobbies: %6$s\n                    |Satisfaction level: %7$s\n                    |Newsletter subscription: Yes.\n                "</string>
+    <string name="nombre_apellidos_email_sexo_pais_de_origen_hobbies_nivel_de_satisfaccion_suscripcion_al_boletin_no">"First Name: %1$s\n                    |Last Name: %2$s\n                    |Email: %3$s\n                    |Gender: %4$s\n                    |Country of origin: %5$s\n                    |Hobbies: %6$s\n                    |Satisfaction level: %7$s\n                    |Newsletter subscription: No.\n                "</string>
+    <string name="no_has_escogido_ningun_hobbie">You haven\'t chosen any hobby</string>
+    <string-array name="paises_array">
+        <item>Spain</item>
+        <item>Argentina</item>
+        <item>France</item>
+        <item>Brazil</item>
+        <item>Germany</item>
+    </string-array>
+</resources>

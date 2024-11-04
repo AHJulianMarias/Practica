@@ -35,22 +35,29 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        val botonGuardar: Button = findViewById(R.id.botonMostrarResultado)
-        val paises = arrayOf(
-            "España",
-            "Argentina",
-            "Francia",
-            "Brasil",
-            "Alemania",
-        )
 
+        //en cuanto se crea la vista, ponemos el focus en nombre
+        val nombreInput = findViewById<EditText>(R.id.nombreInp)
+        nombreInput.requestFocus()
+
+        mostrarResText = findViewById(R.id.mostrarResultado)
+        if (savedInstanceState != null) {
+            // Recuperamos y establecemos el texto guardado del EditText
+            val savedText = savedInstanceState.getString(KEY_MOSTRAR_RESULTADO)
+            mostrarResText.text = savedText
+
+        }
 
         //SPINNER
-
-        spinnerPaises = findViewById<Spinner>(R.id.spinnerPaises)
-        val adapter = ArrayAdapter(this, android.R.layout.simple_spinner_item, paises)
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-        spinnerPaises.adapter = adapter
+        spinnerPaises = findViewById(R.id.spinnerPaises)
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.paises_array,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinnerPaises.adapter = adapter
+        }
         spinnerPaises.onItemSelectedListener = this
 
 
@@ -59,46 +66,25 @@ class MainActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         val textoSeekB = findViewById<TextView>(R.id.valorSeekBar)
         seekB.max = 10
         seekB.min = 0
-        mostrarResText = findViewById(R.id.mostrarResultado)
 
-        if (savedInstanceState != null) {
-            // Recuperamos y establecemos el texto guardado del EditText
-            val savedText = savedInstanceState.getString(KEY_MOSTRAR_RESULTADO)
-            mostrarResText.text = savedText
 
-        }
+
 
         seekB.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            /**
-             * Método que se llama cada vez que cambio el progreso
-             * seekBar contiene la referencia a la seekBar
-             * progress contiene el valor actual de la seekbar
-             * fromUser indica si el cambio lo ha producido el usuario al arastar la barra
-             */
+
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                // Actualiza el TextView mientras se mueve la SeekBar
                 textoSeekB.text = progress.toString()
             }
 
-            /**
-             * Se llama caundo el usuario comienza a tocar la seekbar
-             */
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                // No se necesita implementación en este caso
-            }
+            override fun onStartTrackingTouch(seekBar: SeekBar?) {}
 
-            /**
-             * Se llama cuando el usuario deja de tocarla
-             */
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                // No se necesita implementación en este caso
-            }
+            override fun onStopTrackingTouch(seekBar: SeekBar?) {}
         })
-
+        //declaramos y asignamos botonGuardar
+        val botonGuardar: Button = findViewById(R.id.botonMostrarResultado)
         botonGuardar.setOnClickListener {
 
             // vistas + asignación de texto de nombre, apellidos y mail
-            val nombreInput = findViewById<EditText>(R.id.nombreInp)
             val apellidoInput = findViewById<EditText>(R.id.apellidosInp)
             val emailInp = findViewById<EditText>(R.id.emailInp)
             if (nombreInput.text.toString() == "") {

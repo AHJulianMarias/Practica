@@ -22,4 +22,11 @@
     <string name="nombre_apellidos_email_sexo_pais_de_origen_hobbies_nivel_de_satisfaccion_suscripcion_al_boletin_si">"Nombre: %1$s\n                    |Apellidos: %2$s\n                    |Email: %3$s\n                    |Sexo: %4$s\n                    |País de origen: %5$s\n                    |Hobbies: %6$s\n                    |Nivel de satisfacción: %7$s\n                    |Suscripción al boletin: Si.\n                "</string>
     <string name="nombre_apellidos_email_sexo_pais_de_origen_hobbies_nivel_de_satisfaccion_suscripcion_al_boletin_no">"Nombre: %1$s\n                    |Apellidos: %2$s\n                    |Email: %3$s\n                    |Sexo: %4$s\n                    |País de origen: %5$s\n                    |Hobbies: %6$s\n                    |Nivel de satisfacción: %7$s\n                    |Suscripción al boletin: No.\n                "</string>
     <string name="no_has_escogido_ningun_hobbie">No has escogido ningun hobbie</string>
+    <string-array name="paises_array">
+        <item>España</item>
+        <item>Argentina</item>
+        <item>Francia</item>
+        <item>Brasil</item>
+        <item>Alemania</item>
+    </string-array>
 </resources>
